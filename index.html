@@ -58,6 +58,7 @@
 <script>
   const target = document.getElementById('target');
   const yesButton = document.getElementById('yes');
+
   function moveTarget() {
     const maxWidth = 400;
     const maxHeight = 400;
@@ -68,11 +69,27 @@
     target.style.left = randomX + 'px';
     target.style.top = randomY + 'px';
   }
+
   function displayMessage() {
     alert('Really?');
   }
+
+  function hideTarget() {
+    target.style.display = 'none';
+    setTimeout(() => {
+      target.style.display = 'block';
+    }, 1000); // Hide for 1 second
+  }
+
+  // Mouse events
   target.addEventListener('mouseenter', moveTarget);
   yesButton.addEventListener('click', displayMessage);
+  target.addEventListener('click', hideTarget);
+
+  // Touch events
+  target.addEventListener('touchstart', moveTarget);
+  yesButton.addEventListener('touchstart', displayMessage);
+  target.addEventListener('touchstart', hideTarget);
 </script>
 </body>
 </html>
